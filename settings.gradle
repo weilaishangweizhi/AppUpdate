@@ -1,0 +1,3 @@
+include ':AppUpdateLibrary'
+include ':app'
+rootProject.name = "AppUpdate"

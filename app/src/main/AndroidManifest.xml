@@ -27,7 +27,7 @@
         </activity>
 
         <provider
-            android:name="androidx.core.content.FileProvider"
+            android:name="com.hollysmart.appupdatelibrary.CaiProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">

@@ -36,6 +36,14 @@ public class AppUpdateUtil {
     private String apkPath;
     private String apkName;
 
+    /**
+     * 初始化
+     * @param application
+     * @param icon           应用图标
+     * @param appName        应用名称
+     * @param apkPath        apk下载地址
+     * @param apkName        apk下载名称
+     */
     public AppUpdateUtil(Application application,int icon, String appName, String apkPath, String apkName) {
         this.icon = icon;
         this.appName = appName;
@@ -234,7 +242,7 @@ public class AppUpdateUtil {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             //这里要注意FileProvider一定要在AndroidManifest中去声明哦
             //同时com.mc.mcplatform代表你自己的包名
-            String provider = activity.getPackageName() + ".provider";
+            String provider = activity.getPackageName() + ".caiFileProvider";
             Uri apkUri = FileProvider.getUriForFile(activity,
                     provider, file);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);

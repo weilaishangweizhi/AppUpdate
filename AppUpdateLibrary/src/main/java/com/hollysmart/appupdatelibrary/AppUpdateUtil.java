@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -102,7 +103,17 @@ public class AppUpdateUtil {
                 } else {
                     if (autoUpdate) {
                         Mlog.d("自动更新----");
-                        autoDownloadApp(activity, downLoadURL);
+                        PermissionUtils.permission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                                .callback(new PermissionUtils.SimpleCallback() {
+                                    @Override
+                                    public void onGranted() {
+                                        autoDownloadApp(activity, downLoadURL);
+                                    }
+                                    @Override
+                                    public void onDenied() {
+                                        ToastUtils.showShort("下载apk需要文件读写权限");
+                                    }
+                                }).request();
                     } else {
                         if (needUpdate) {
                             Mlog.d("需要更新----");
@@ -226,6 +237,8 @@ public class AppUpdateUtil {
             );
             notificationManager = activity.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
+        }else {
+            notificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
         }
     }
 

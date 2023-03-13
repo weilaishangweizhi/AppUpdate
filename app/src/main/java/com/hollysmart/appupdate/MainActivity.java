@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         String downloadUrl = "http://aapk.hollysmart.com.cn/%E9%80%9A%E5%B7%9E12345/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/tzapp-release-v1.0.5-5.apk";
         String remark = "测试版本更新";
         appUpdateUtil.checkUpdate(this, true, true, false,
-                false, true, downloadUrl, remark);
+                true, true, downloadUrl, remark);
 
     }
 }

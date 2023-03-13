@@ -242,7 +242,7 @@ public class AppUpdateUtil {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             //这里要注意FileProvider一定要在AndroidManifest中去声明哦
             //同时com.mc.mcplatform代表你自己的包名
-            String provider = activity.getPackageName() + ".caiFileProvider";
+            String provider = activity.getPackageName() + ".appUpdateProvider";
             Uri apkUri = FileProvider.getUriForFile(activity,
                     provider, file);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
